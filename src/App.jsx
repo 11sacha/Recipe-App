@@ -1,12 +1,21 @@
-import { useState } from 'react'
+import { useState } from 'react';
+import SideBar from './components/SideBar';
+import { Route, Routes } from 'react-router-dom';
+import HomePage from './pages/HomePage';
+import FavouritesPage from './pages/FavouritesPage';
+
 
 function App() {
   
 
   return (
-    <>
-      <h1 className='text-red-600'>hello world</h1>
-    </>
+    <div className='flex'>
+      <SideBar / >
+      <Routes>
+        <Route path='/' element={<HomePage />} />
+        <Route path='/favourites' element={<FavouritesPage />} />
+      </Routes>
+    </div>
   )
 }
 
