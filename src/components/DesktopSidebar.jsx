@@ -16,7 +16,7 @@ function DesktopSidebar() {
                 <span className='font-bold hidden md:block'>Home</span>
               </Link>
               <Link to={"/favourites"} className='flex gap-1'>
-                <Heart />
+                <Heart size={"24"}/>
                 <span className='font-bold hidden md:block'>Favourites</span>
               </Link>
             </ul>
