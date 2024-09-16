@@ -1,4 +1,4 @@
-import { Heart, Search } from 'lucide-react'
+import { Heart, Search, HeartPulse } from 'lucide-react'
 import React from 'react'
 
 function HomePage() {
@@ -36,6 +36,18 @@ function HomePage() {
             </a>
             <div className='flex mt-1'>
               <p className='font-bold tracking-wide'>Roasted Chicken</p>
+            </div>
+            <p className='my-2'>Turkish Kitchen</p>
+
+            <div className='flex gap-2 mt-auto'>
+              <div className='flex gap-1 bg-[#d6f497] items-center p-1 rounded-md'>
+                <HeartPulse size={16} />
+                <span className='text-sm tracking-tighter font-semibold'>Gluten-free</span>
+              </div>
+              <div className='flex gap-1 bg-[#d6f497] items-center p-1 rounded-md'>
+                <HeartPulse size={16} />
+                <span className='text-sm tracking-tighter font-semibold'>Heart-healthy</span>
+              </div>
             </div>
 
           </div>
