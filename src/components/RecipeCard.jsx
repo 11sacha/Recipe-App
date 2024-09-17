@@ -1,4 +1,5 @@
 import React from 'react'
+import { Heart, Soup, HeartPulse } from 'lucide-react'
 
 function RecipeCard() {
   return (
