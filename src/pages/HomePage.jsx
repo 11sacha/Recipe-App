@@ -1,8 +1,34 @@
 import { Search } from 'lucide-react'
-import React from 'react'
+import { useState, useEffect } from 'react'
 import RecipeCard from '../components/RecipeCard.jsx'
 
+const app_key = process.env.REACT_APP_API_KEY;
+const app_id = process.env.REACT_APP_API_ID;
+
 function HomePage() {
+  const [recipes, setRecipes] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  const fetchRecipes = async (searchQuery) => {
+    setLoading(true);
+    setRecipes([]);
+    try {
+      const res = await fetch(
+        `https://api.edamam.com/api/recipes/v2/?app_id=${app_id}&app_key=${app_key}&q=${searchQuery}&type=public`
+      );
+      const data = await res.json();
+      console.log(data);
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setLoading(false)
+    }
+  };
+
+  useEffect(() => {
+    fetchRecipes("beef");
+  }, []);
+
   return (
     <div className='bg-[#faf9fb] p-10 flex-1'>
       <div className='max-w-screen-lg mx-auto'>
