@@ -48,7 +48,11 @@ function HomePage() {
           Popular Choices
         </p>
         <div id='recipe grid' className='grid gap-3 grid-cols-1 md:grid-cols-2 lg:grid-cols-3'>
-          <RecipeCard />
+          
+          {!loading && recipes.map(({recipe}, index) => (
+            <RecipeCard key={index} recipe={recipe} />
+          ))}
+
           {loading && 
             [...Array(9)].map((_, index) => (
               <div key={index} className='flex flex-col gap-4 w-full'>
