@@ -17,9 +17,10 @@ function HomePage() {
         `https://api.edamam.com/api/recipes/v2/?app_id=${app_id}&app_key=${app_key}&q=${searchQuery}&type=public`
       );
       const data = await res.json();
-      console.log(data);
+      setRecipes(data.hits);
+      console.log(data.hits);
     } catch (error) {
-      console.log(error);
+      console.log(error.message);
     } finally {
       setLoading(false)
     }
@@ -48,6 +49,17 @@ function HomePage() {
         </p>
         <div id='recipe grid' className='grid gap-3 grid-cols-1 md:grid-cols-2 lg:grid-cols-3'>
           <RecipeCard />
+          {loading && 
+            [...Array(9)].map((_, index) => (
+              <div key={index} className='flex flex-col gap-4 w-full'>
+                <div className='skeleton h-32 w-full'></div>
+                <div className='flex justify-between'>
+                  <div className='skeleton h-4 w-28'></div>
+                  <div className='skeleton h-4 w-28'></div>
+                </div>
+                <div className='skeleton h-4 w-1/2'></div>
+              </div>
+            ))}
         </div>
       </div>
     </div>
