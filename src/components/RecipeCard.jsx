@@ -1,7 +1,13 @@
 import React from 'react'
 import { Heart, Soup, HeartPulse } from 'lucide-react'
 
+const getTwoValuesFromArray = (arr) => {
+  return [arr[0], arr[1]];
+}
+
 function RecipeCard({recipe}) {
+  const healthLabels = getTwoValuesFromArray(recipe.healthLabels);
+
   return (
     <div className='flex flex-col rounded-md bg-[#ecf7d4] overflow-hidden p-3 relative'>
         <a href="" className='relative h-32'>
@@ -24,14 +30,12 @@ function RecipeCard({recipe}) {
         </p>
 
         <div className='flex gap-2 mt-auto'>
-          <div className='flex gap-1 bg-[#d6f497] items-center p-1 rounded-md'>
-            <HeartPulse size={16} />
-            <span className='text-sm tracking-tighter font-semibold'>Gluten-free</span>
-          </div>
-          <div className='flex gap-1 bg-[#d6f497] items-center p-1 rounded-md'>
-            <HeartPulse size={16} />
-            <span className='text-sm tracking-tighter font-semibold'>Heart-healthy</span>
-          </div>
+          {healthLabels.map((label, index) => (
+            <div key={index} className='flex gap-1 bg-[#d6f497] items-center p-1 rounded-md'>
+              <HeartPulse size={16} />
+              <span className='text-sm tracking-tighter font-semibold'>{label}</span>
+            </div>
+          ))}
         </div>
 
     </div>
