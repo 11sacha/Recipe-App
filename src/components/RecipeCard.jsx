@@ -1,16 +1,35 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Heart, Soup, HeartPulse } from 'lucide-react'
 
 const getTwoValuesFromArray = (arr) => {
   return [arr[0], arr[1]];
 }
 
-function RecipeCard({recipe}) {
+function RecipeCard({recipe, bg, badge}) {
   const healthLabels = getTwoValuesFromArray(recipe.healthLabels);
+  const [isFavourites, setIsFavourites] = useState(localStorage.getItem("favourites")?.includes(recipe.label));
+
+  const addRecipeToFavourites = () => {
+    let favourites = JSON.parse(localStorage.getItem("favourites")) || [];
+    const isRecipeAlreadyInFavourites = favourites.some((fav) => fav.label === recipe.label);
+
+    if(isRecipeAlreadyInFavourites) {
+      favourites = favourites.filter((fav) => fav.label !== recipe.label);
+      setIsFavourites(false);
+    } else {
+      favourites.push(recipe);
+      setIsFavourites(true);
+    }
+
+    localStorage.setItem("favourites", JSON.stringify(favourites));
+  }
 
   return (
-    <div className='flex flex-col rounded-md bg-[#ecf7d4] overflow-hidden p-3 relative'>
-        <a href="" className='relative h-32'>
+    <div className={`flex flex-col rounded-md ${bg} overflow-hidden p-3 relative`}>
+        <a 
+          href={`https://www.youtube.com/results?search_query=${recipe.label} recipe`} 
+          className='relative h-32'
+        >
           <img src={recipe.image} alt="recipe img" className='rounded-md w-full h-full object-cover cursor-pointer' />
 
           <div className='absolute bottom-2 left-2 bg-white rounded-full p-1 cursor-pointer flex items-center gap-1 text-sm'>
@@ -31,7 +50,7 @@ function RecipeCard({recipe}) {
 
         <div className='flex gap-2 mt-auto'>
           {healthLabels.map((label, index) => (
-            <div key={index} className='flex gap-1 bg-[#d6f497] items-center p-1 rounded-md'>
+            <div key={index} className={`flex gap-1 ${badge} items-center p-1 rounded-md`}>
               <HeartPulse size={16} />
               <span className='text-sm tracking-tighter font-semibold'>{label}</span>
             </div>
