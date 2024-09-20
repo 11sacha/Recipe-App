@@ -36,8 +36,15 @@ function RecipeCard({recipe, bg, badge}) {
             <Soup size={16}/> {recipe.yield} Servings
           </div>
 
-          <div className='absolute top-1 right-2 bg-white rounded-full p-1 cursor-pointer'>
-            <Heart size={20} className='hover:fill-red-500 hover:text-red-500' />
+          <div 
+            className='absolute top-1 right-2 bg-white rounded-full p-1 cursor-pointer'
+            onClick={(e) => {
+              e.preventDefault();
+              addRecipeToFavourites();
+            }}
+          >
+            {!isFavourites && <Heart size={20} className='hover:fill-red-500 hover:text-red-500' />}
+            {isFavourites && <Heart size={20} className='fill-red-500 text-red-500' />}
           </div>
 
         </a>
