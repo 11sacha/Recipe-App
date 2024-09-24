@@ -8,7 +8,7 @@ function DesktopSidebar() {
         <div className='flex flex-col gap-20 sticky top-10 left-0'>
             <Link to={"/"} className='flex gap-1'>
               <div className='w-full'>
-                <img src="/logo.svg" alt="logo" className='hidden md:block' />
+                <img src="/app-logo.jpg" alt="logo" className='hidden md:block' />
                 <img src="/mobile-logo.svg" alt="logo" className='block md:hidden' />
               </div>
             </Link>

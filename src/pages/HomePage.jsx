@@ -37,7 +37,7 @@ function HomePage() {
   }
 
   return (
-    <div className='bg-[#faf9fb] p-10 flex-1'>
+    <div className='bg-[#d4d1d6] p-10 flex-1'>
       <div className='max-w-screen-lg mx-auto'>
 
         <form onSubmit={handleSearchRecipe}>
