@@ -13,9 +13,11 @@ const COLORS = {
 	},
 };
 
-export const getRandomColor = () => {
+ const getRandomColor = () => {
 	const colorNames = Object.keys(COLORS); 
 	const randomIndex = Math.floor(Math.random() * colorNames.length);
 	const randomColorName = colorNames[randomIndex]; 
 	return COLORS[randomColorName];
 };
+
+export default getRandomColor;

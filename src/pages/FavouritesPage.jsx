@@ -1,6 +1,6 @@
 import React from 'react'
 import RecipeCard from '../components/RecipeCard.jsx'
-import { getRandomColor } from '../lib/utils.js';
+import getRandomColor from '../lib/utils.js';
 
 function FavouritesPage() {
   const fav = false;

@@ -29,6 +29,7 @@ function RecipeCard({recipe, bg, badge}) {
         <a 
           href={`https://www.youtube.com/results?search_query=${recipe.label} recipe`} 
           className='relative h-32'
+          target='_blank'
         >
           <img 
             src={recipe.image} 

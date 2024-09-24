@@ -3,8 +3,8 @@ import { useState, useEffect } from 'react';
 import RecipeCard from '../components/RecipeCard.jsx';
 import getRandomColor from '../lib/utils.js';
 
-const app_key = process.env.REACT_APP_API_KEY;
-const app_id = process.env.REACT_APP_API_ID;
+const app_key = import.meta.env.VITE_APP_KEY;
+const app_id = import.meta.env.VITE_APP_ID;
 
 function HomePage() {
   const [recipes, setRecipes] = useState([]);
@@ -31,11 +31,16 @@ function HomePage() {
     fetchRecipes("beef");
   }, []);
 
+  const handleSearchRecipe = (e) => {
+    e.preventDefault();
+    fetchRecipes(e.target[0].value);
+  }
+
   return (
     <div className='bg-[#faf9fb] p-10 flex-1'>
       <div className='max-w-screen-lg mx-auto'>
 
-        <form action="">
+        <form onSubmit={handleSearchRecipe}>
           <label className='input shadow-md flex items-center gap-2'>
             <Search size={"24"}/>
             <input type="text" className='text-sm md:text-md grow' placeholder='What do you want to cook today?'/>
@@ -71,4 +76,4 @@ function HomePage() {
   )
 }
 
-export default HomePage
+export default HomePage;
